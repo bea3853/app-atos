@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congresso 2026</title>
+    
+    <!-- Meta tags para PWA básico -->
+    <meta name="theme-color" content="#0d0d0d">
+    <meta name="description" content="Aplicação oficial do Congresso 2026. Confira a programação, louvores, uniformes e informações oficiais.">
+    <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=180&q=80">
+
+    <!-- Preconnect Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Arquivo de Estilos Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js (Carregado de forma segura no head para inicialização do background) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- Canvas para o Fundo Interativo em 3D -->
+    <canvas id="webgl-bg"></canvas>
+
+    <!-- Navbar Fixa -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">CONGRESSO <span class="accent-text">2026</span></span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#louvores" class="nav-link">Louvores</a></li>
+                <li class="nav-item"><a href="#uniformes" class="nav-link">Uniformes</a></li>
+                <li class="nav-item"><a href="#cores" class="nav-link">Cores</a></li>
+                <li class="nav-item"><a href="#programacao" class="nav-link">Programação</a></li>
+                <li class="nav-item"><a href="#convite" class="nav-link">Convite</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Localização</a></li>
+            </ul>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seção Hero (Ocupando toda a tela) -->
+    <header id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-badge animate-fade-in">Ministério Atos</div>
+            <h1 class="hero-title animate-slide-up">Êxodo 12.13</h1>
+            <p class="hero-verse animate-slide-up-delayed">"E aquele sangue vos será por sinal nas casas em que estiverdes; vendo eu sangue, passarei por cima de vós, e não haverá entre vós praga de mortandade, quando eu ferir a terra do Egito" <br><strong>***</strong></p>
+            <div class="hero-date animate-slide-up-delayed">
+                <i class="fa-regular fa-calendar-days"></i> 19  e 20  de Setembro, 2026
+            </div>
+            <div class="hero-buttons animate-fade-in-delayed">
+                <a href="#programacao" class="btn btn-primary">Programação</a>
+                <a href="#louvores" class="btn btn-secondary">Louvores</a>
+            </div>
+            <br>
+             <br>
+              <br>
+              <br>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Role para explorar</p>
+        </div>
+    </header>
+
+    <!-- Seção de Louvores -->
+    <section id="louvores" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Adoração e Louvor</span>
+                <h2>Playlist Oficial</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="louvores-grid">
+                <!-- Card Louvor 1 -->
+                <div class="card louvor-card">
+                    <div class="louvor-img-container">
+                        <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=500&q=80" alt="Instrumento Musical" class="louvor-img">
+                        <div class="louvor-overlay">
+                            <i class="fa-solid fa-play play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="louvor-info">
+                        <h3>Aqui o  Mal não vai entrar</h3>
+                        <p class="artist">Paloma Possi</p>
+                        <div class="louvor-actions">
+                            <!-- <button class="btn btn-lyrics" onclick="openModal('letra-1')"><a href="https://www.letras.mus.br/imafe-music/aqui-o-mal-nao-vai-entrar-part-paloma-possi/" class="btn btn-lyrics>Letra</button> -->
+                            <a href="https://www.youtube.com/watch?v=HdNvsP_u87A" target="_blank" rel="noopener" class="btn btn-icon-play"><i class="fa-brands fa-youtube"></i> Ouvir</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Louvor 2 -->
+                <div class="card louvor-card">
+                    <div class="louvor-img-container">
+                        <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=500&q=80" alt="Teclado sob luzes" class="louvor-img">
+                        <div class="louvor-overlay">
+                            <i class="fa-solid fa-play play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="louvor-info">
+                        <h3>O segredo é o sangue</h3>
+                        <p class="artist">Amanda ferrari e Maurizélia</p>
+                        <div class="louvor-actions">
+                            <!-- <button class="btn btn-lyrics" onclick="openModal('letra-2')">Letra</button> -->
+                            <a href="https://www.youtube.com/watch?v=TlyHoHLn8PQ" target="_blank" rel="noopener" class="btn btn-icon-play"><i class="fa-brands fa-youtube"></i> Ouvir</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Louvor 3 -->
+                <div class="card louvor-card">
+                    <div class="louvor-img-container">
+                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=500&q=80" alt="Concerto ao vivo" class="louvor-img">
+                        <div class="louvor-overlay">
+                            <i class="fa-solid fa-play play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="louvor-info">
+                        <h3>Nada Além do Sangue </h3>
+                        <p class="artist">Felipe Rodrigues</p>
+                        <div class="louvor-actions">
+                            <!-- <button class="btn btn-lyrics" onclick="openModal('letra-3')">Letra</button> -->
+                            <a href="https://www.youtube.com/watch?v=mv4_X1xwJlk" target="_blank" rel="noopener" class="btn btn-icon-play"><i class="fa-brands fa-youtube"></i> Ouvir</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Louvor 4 -->
+                <div class="card louvor-card">
+                    <div class="louvor-img-container">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=500&q=80" alt="Palco iluminado" class="louvor-img">
+                        <div class="louvor-overlay">
+                            <i class="fa-solid fa-play play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="louvor-info">
+                        <h3>Voltemos ao inicio</h3>
+                        <p class="artist">Laura Souguellis | Marcos Brunet</p>
+                        <div class="louvor-actions">
+                            <!-- <button class="btn btn-lyrics" onclick="openModal('letra-4')">Letra</button> -->
+                            <a href="https://www.youtube.com/watch?v=-OJTyW7CYtU" target="_blank" rel="noopener" class="btn btn-icon-play"><i class="fa-brands fa-youtube"></i> Ouvir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ------------- -->
+
+
+<!-- Seção de Letras e Cifras Oficiais (Adicionado acima da Liturgia) -->
+<section id="recursos-louvor" style="padding: 80px 0; background-color: rgba(10, 10, 11, 0.5);">
+    <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <span class="subtitle" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 4px; color: #e63946; font-weight: 600; display: block; margin-bottom: 12px;">Estudo e Ensaio</span>
+            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; font-weight: 600; color: #ffffff; margin: 0;">Letras & Cifras Oficiais</h2>
+            <div class="divider" style="width: 60px; height: 3px; background: #e63946; margin: 16px auto 0; border-radius: 2px;"></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+            
+            <!-- Música 1 -->
+            <div style="background: rgba(25, 25, 27, 0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="color: #e63946; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px;">IMAFE Music</span>
+                    <h3 style="color: #ffffff; font-size: 1.25rem; font-weight: 600; margin: 0 0 16px 0; line-height: 1.4;">Aqui o Mal Não Vai Entrar</h3>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.letras.mus.br/imafe-music/aqui-o-mal-nao-vai-entrar-part-paloma-possi/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-align-left" style="color: #e63946;"></i> Letra
+                    </a>
+                    <a href="https://www.cifraclub.com.br/imafe-music/aqui-o-mal-nao-vai-entrar-part-paloma-possi/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: #e63946; color: #ffffff; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-guitar"></i> Cifra
+                    </a>
+                </div>
+            </div>
+
+            <!-- Música 2 -->
+            <div style="background: rgba(25, 25, 27, 0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="color: #e63946; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px;">Amanda Ferrari</span>
+                    <h3 style="color: #ffffff; font-size: 1.25rem; font-weight: 600; margin: 0 0 16px 0; line-height: 1.4;">O Segredo É o Sangue</h3>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.letras.mus.br/maurizelia/o-segredo-e-o-sangue-part-amanda-ferrari/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-align-left" style="color: #e63946;"></i> Letra
+                    </a>
+                    <a href="https://www.cifraclub.com.br/amanda-ferrari/o-segredo-e-o-sangue/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: #e63946; color: #ffffff; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-guitar"></i> Cifra
+                    </a>
+                </div>
+            </div>
+
+            <!-- Música 3 -->
+            <div style="background: rgba(25, 25, 27, 0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="color: #e63946; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px;">Laura Souguellis</span>
+                    <h3 style="color: #ffffff; font-size: 1.25rem; font-weight: 600; margin: 0 0 16px 0; line-height: 1.4;">Voltemos ao Início</h3>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.letras.mus.br/laura-souguellis/voltemos-ao-inicio-voltemos-ao-principio/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-align-left" style="color: #e63946;"></i> Letra
+                    </a>
+                    <a href="https://www.cifraclub.com.br/laura-souguellis/voltemos-ao-inicio-voltemos-ao-principio/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: #e63946; color: #ffffff; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-guitar"></i> Cifra
+                    </a>
+                </div>
+            </div>
+
+            <!-- Música 4 -->
+            <div style="background: rgba(25, 25, 27, 0.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 24px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="color: #e63946; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px;">Felipe Rodrigues</span>
+                    <h3 style="color: #ffffff; font-size: 1.25rem; font-weight: 600; margin: 0 0 16px 0; line-height: 1.4;">Nada Além do Sangue</h3>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.letras.mus.br/felipe-rodrigues/nada-alem-do-sangue-porque-ele-vive/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-align-left" style="color: #e63946;"></i> Letra
+                    </a>
+                    <a href="https://www.cifraclub.com.br/felipe-rodrigues/nada-alem-do-sangue-porque-ele-vive-pot-pourri/" target="_blank" rel="noopener" 
+                       style="flex: 1; text-align: center; text-decoration: none; background: #e63946; color: #ffffff; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fa-solid fa-guitar"></i> Cifra
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- ------------- -->
+
+    <!-- Seção de Uniformes (Cards com Efeito Parallax/3D via JS) -->
+    <section id="uniformes" class="section-padding section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Identidade Visual</span>
+                <h2>Uniformes Oficiais</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="uniformes-grid">
+                <!-- Uniforme Masculino -->
+                <div class="card-3d-wrapper">
+                    <div class="card-3d" id="card-masc">
+                        <div class="card-3d-inner">
+                            <div class="card-3d-img-container">
+                                <img src="mocas.jpg" alt="Social Masculino Moderno" class="uniforme-img">
+                            </div>
+                            <div class="card-3d-content">
+                                <span class="badge">Masculino</span>
+                                <h3>Traje Oficial</h3>
+                                <p>Terno slim preto carbono, camisa social branca acetinada e gravata slim vermelha fosca.</p>
+                                <ul class="details-list">
+                                    <li><i class="fa-solid fa-circle-check"></i> Calça social preta</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Gravata slim inclusa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uniforme Feminino -->
+                <div class="card-3d-wrapper">
+                    <div class="card-3d" id="card-fem">
+                        <div class="card-3d-inner">
+                            <div class="card-3d-img-container">
+                                <img src="mocos.jpeg" alt="Social Feminino Moderno" class="uniforme-img">
+                            </div>
+                            <div class="card-3d-content">
+                                <span class="badge">Feminino</span>
+                                <h3>Traje Oficial</h3>
+                                <p>Elegante vestido tubinho midi na cor vermelho escuro (bordô/marsala) com detalhes finos em alfaiataria.</p>
+                                <ul class="details-list">
+                                    <li><i class="fa-solid fa-circle-check"></i> Comprimento Midi</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Acessórios delicados em dourado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Cores Oficiais -->
+    <section id="cores" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Significado das Cores</span>
+                <h2>Paleta do Congresso</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="cores-container">
+                <!-- Cor Vermelha -->
+                <div class="cor-item card">
+                    <div class="color-preview" style="background: linear-gradient(135deg, #e63946, #800f2f);">
+                        <span class="color-hex">#E63946</span>
+                    </div>
+                    <div class="color-desc">
+                        <h3>Vermelho Profundo</h3>
+                        <p>Simboliza o sacrifício redentor de Jesus Cristo, o sangue derramado na cruz para purificação dos nossos pecados e a chama viva do Espírito Santo que nos move.</p>
+                    </div>
+                </div>
+
+                <!-- Cor Branca -->
+                <div class="cor-item card">
+                    <div class="color-preview" style="background: linear-gradient(135deg, #ffffff, #e0e0e0);">
+                        <span class="color-hex" style="color: #0d0d0d;">#FFFFFF</span>
+                    </div>
+                    <div class="color-desc">
+                        <h3>Branco Puro</h3>
+                        <p>Representa a santidade, a pureza alcançada através da redenção, a paz interior com Deus e a justiça dos santos vestida em vestes resplandecentes.</p>
+                    </div>
+                </div>
+
+                <!-- Cor Preta -->
+                <div class="cor-item card">
+                    <div class="color-preview" style="background: linear-gradient(135deg, #1f1f21, #000000);">
+                        <span class="color-hex">#000000</span>
+                    </div>
+                    <div class="color-desc">
+                        <h3>Preto Carbono</h3>
+                        <p>Representa a solenidade, a reverência diante da presença soberana do Criador e o contraste absoluto do mundo que fomos chamados a brilhar fora dele.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Liturgia (Timeline) -->
+    <section id="programacao" class="section-padding section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Cronograma</span>
+                <h2>Programação do Congresso</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="timeline">
+                <!-- Evento 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dia 1 e 2 </div>
+                    <div class="timeline-content card">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 18h45 e 17h45</span>
+                        <h3>Abertura</h3>
+                        <p>Início do congresso - Oração (Dia 1 -  Dia 2 - ) e palavra oficial.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dia 1 e 2 </div>
+                    <div class="timeline-content card">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 19h00 e 20h00</span>
+                        <h3>Aportunidades</h3>
+                        <p>Louvor  ->1º Atos | ... ajustar aqui </p>
+                    </div>
+                </div>
+
+                <!-- Evento 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dia 1 e 2 </div>
+                    <div class="timeline-content card">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 19h45 e 18h45</span>
+                        <h3>Palavra Dizimo  e Oferta </h3>
+                        <p>Nomes: </p>
+                    </div>
+                </div>
+
+                <!-- Evento 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dia 1 e 2 </div>
+                    <div class="timeline-content card">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 20h00 e 19h00 </span>
+                        <h3>Palavra Principal -> Dia 1 : Dia 2 Miss Berenice</h3>
+                        <p>Tema do Congresso </p>
+                    </div>
+                </div>
+
+                <!-- Evento 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dia 1 e 2 </div>
+                    <div class="timeline-content card">
+                        <span class="time-badge"><i class="fa-regular fa-clock"></i> 21h15 e 20h15</span>
+                        <h3>Último Louvor do grupo Atos</h3>
+                        <p>Entrega das lembracinhas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Convite PDF -->
+    <section id="convite" class="section-padding">
+        <div class="container">
+            <div class="convite-wrapper card">
+                <div class="convite-content">
+                    <h2>Convite seu amigos e parentes</h2>
+                    <p>Preparamos um material digital elegante com todos os detalhes do evento, orientações úteis e cronograma completo para você compartilhar com familiares, amigos ou arquivar no seu celular.</p>
+                    <a href="convite.jpeg" id="download-btn" class="btn btn-download">
+                        <span class="shiny-effect"></span>
+                        <i class="fa-solid fa-file-pdf"></i> Baixar Convite Oficial (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé Completo com Mapa e Informações -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Coluna 1: Sobre a Igreja -->
+                <div class="footer-col">
+                    <h3>Catedral da Aliança</h3>
+                    <p class="footer-about">Uma igreja engajada na proclamação do Evangelho eterno, no desenvolvimento de vidas e no serviço prático ao próximo.</p>
+                    <!-- <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div> -->
+                </div>
+
+                <!-- Coluna 2: Endereço & Contato -->
+                <div class="footer-col">
+                    <h3>Onde Nos Encontrar</h3>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-location-dot"></i> Reinaldo Cesar Oliveira, 328, Vila Rio, Guarulhos/SP</li>
+                        <!-- <li><i class="fa-solid fa-phone"></i> (11) 2468-1357</li> -->
+                        <!-- <li><i class="fa-solid fa-envelope"></i> contato@catedraldaalianca.org</li> -->
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Localização em Mapa -->
+                <div class="footer-col footer-map-col">
+                    <h3>Como Chegar</h3>
+                    <div class="map-container card">
+                        <!-- Mapa Estilizado Mockup em Dark Mode (Evita carregamento pesado do Google Maps puro quebrando UI) -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.324966942197!2d-46.54439862467381!3d-23.430496878890004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef4ef620b725b%3A0x42f35396abdeee21!2sR.%20Reinaldo%20C%C3%A9sar%20de%20Oliveira%2C%20328%20-%20Jardim%20City%2C%20Guarulhos%20-%20SP%2C%2007082-510!5e1!3m2!1spt-BR!2sbr!4v1784038086388!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" 
+                            width="100%" 
+                            height="150" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modais de Letras (Ocultos por padrão) -->
+    <div id="lyrics-modal" class="modal-overlay">
+        <div class="modal-content card">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="modal-title">Título do Louvor</h2>
+            <p id="modal-artist" class="artist">Artista</p>
+            <div id="modal-body" class="lyrics-body">
+                <!-- Inserido dinamicamente via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts da Aplicação -->
+    <script src="threeScene.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
